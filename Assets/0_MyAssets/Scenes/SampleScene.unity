@@ -480,6 +480,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d3c166db60544e7e97717fff2601cf7, type: 3}
+--- !u!1 &485084637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5023988136950240824, guid: 9d3c166db60544e7e97717fff2601cf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 469285570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &485084640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485084637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aaee997eef7c451db57d7408a609360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &485084641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485084637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6b798e9cbeb4dc4a22bd9f30c38bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragDollController: {fileID: 485084640}
 --- !u!1 &573421557 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5023988136950240856, guid: 9d3c166db60544e7e97717fff2601cf7,
