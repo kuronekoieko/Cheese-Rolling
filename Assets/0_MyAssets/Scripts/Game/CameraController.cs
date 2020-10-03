@@ -10,11 +10,11 @@ public class CameraController : MonoBehaviour
     Vector3 offset;
     void Start()
     {
-        offset = transform.position - playerController.transform.position;
+        offset = transform.position - playerController.GetPosition;
     }
 
     void Update()
     {
-        transform.position = playerController.transform.position + offset;
+        transform.position = playerController.GetPosition + offset;
     }
 }

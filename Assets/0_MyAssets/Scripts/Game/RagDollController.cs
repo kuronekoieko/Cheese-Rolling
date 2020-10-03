@@ -23,4 +23,18 @@ public class RagDollController : MonoBehaviour
             rigidbody.AddForce(force, mode);
         }
     }
+
+    public Vector3 GetPosition
+    {
+        get
+        {
+            Vector3 pos = Vector3.zero;
+            foreach (var rigidbody in rigidbodies)
+            {
+                pos += rigidbody.transform.position;
+            }
+
+            return pos / (float)rigidbodies.Length;
+        }
+    }
 }

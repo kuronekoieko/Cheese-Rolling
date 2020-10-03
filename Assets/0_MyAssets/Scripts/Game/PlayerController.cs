@@ -31,4 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         ragDollController.AddForce(Vector3.right * dx * 500);
     }
+
+    public Vector3 GetPosition => ragDollController.GetPosition;
 }
