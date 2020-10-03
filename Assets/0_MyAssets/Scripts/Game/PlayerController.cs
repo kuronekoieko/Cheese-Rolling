@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] RagDollController ragDollController;
+    [Inject] CameraController cameraController;
     float dx;
     void Start()
     {
@@ -14,22 +16,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        dx = 0;
-
-        if (Input.GetMouseButton(0))
-        {
-            dx = Input.GetAxis("Mouse X");
-        }
-
-        Debug.Log(dx);
-
-
+        dx = Input.GetMouseButton(0) ? Input.GetAxis("Mouse X") : 0;
     }
 
 
     private void FixedUpdate()
     {
-        ragDollController.AddForce(Vector3.right * dx * 500);
+        Vector3 cross = Vector3.Cross(cameraController.transform.forward, -Vector3.up);
+        ragDollController.AddForce(cross * dx * 500);
     }
 
     public Vector3 GetPosition => ragDollController.GetPosition;
