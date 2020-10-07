@@ -10,15 +10,16 @@ public class PlayerController : MonoBehaviour
     public Vector3 GetPosition => ragDollController.GetPosition;
     float dx;
     public Vector3 horizontalVec { get; set; }
+    public Transform forwardTf;
 
     private void Awake()
     {
         ragDollController = GetComponent<RagDollController>();
     }
-    
+
     void Start()
     {
-        horizontalVec = Vector3.Cross(cameraController.transform.forward, -Vector3.up);
+        horizontalVec = Vector3.Cross(forwardTf.forward, -Vector3.up);
     }
 
 
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         ragDollController.AddForce(horizontalVec * dx * 1000);
-        ragDollController.AddTorqueSpine(axis: horizontalVec.normalized, forward: cameraController.transform.forward);
+        ragDollController.AddTorqueSpine(axis: horizontalVec.normalized, forward: forwardTf.forward);
         //ragDollController.AddTorqueSpine(axis: cameraController.transform.forward * dx);
         // ragDollController.AddTorqueSpineHorizontal(dx);
     }
