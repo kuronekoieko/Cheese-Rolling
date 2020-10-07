@@ -7,10 +7,8 @@ using Zenject;
 
 public class RagDollController : MonoBehaviour
 {
-    [SerializeField] PlayerController playerController;
     Rigidbody[] rigidbodies;
     [SerializeField] Rigidbody[] spineRigidbodies;
-    [Inject] CameraController cameraController;
     private void Awake()
     {
         rigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -99,7 +97,7 @@ public class RagDollController : MonoBehaviour
         foreach (var rigidbody in rigidbodies)
         {
             Vector3 posFromCenter = rigidbody.transform.position - center;
-            Vector3 addVec = dx * Vector3.Cross(posFromCenter, cameraController.transform.forward);
+            // Vector3 addVec = dx * Vector3.Cross(posFromCenter, cameraController.transform.forward);
             //Vector3 project = Vector3.Project(posFromCenter, center + playerController.horizontalVec);
 
             //Vector3 normal = posFromCenter - project;
@@ -108,7 +106,7 @@ public class RagDollController : MonoBehaviour
             //Debug.Log(rigidbody.transform.name);
             //if (spineRigidbodies.FirstOrDefault(r => r == rigidbody) == null) return;
             if (rigidbody.velocity.magnitude > 10) return;
-            rigidbody.AddForce(addVec * 2000);
+            // rigidbody.AddForce(addVec * 2000);
 
             //Debug.Log(rigidbody.velocity.magnitude);
             // rigidbody.AddTorque(playerController.horizontalVec * 1000000000);
