@@ -13,7 +13,8 @@ public class CameraController : MonoBehaviour
         offset = transform.position - playerController.GetPosition;
     }
 
-    void Update()
+
+    private void LateUpdate()
     {
         transform.position = playerController.GetPosition + offset;
     }
