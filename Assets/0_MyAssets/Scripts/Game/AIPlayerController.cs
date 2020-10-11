@@ -33,7 +33,6 @@ public class AIPlayerController : MonoBehaviour
 
     public void Attacked(Vector3 attackedVec)
     {
-
-        ragDollController.AddForceCenterSpine(attackedVec * 1000, ForceMode.Impulse);
+        ragDollController.AddForceToAttacked(attackedVec.normalized * 2000, ForceMode.Impulse);
     }
 }
