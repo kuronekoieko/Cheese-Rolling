@@ -28,6 +28,12 @@ public class AIPlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // ragDollController.AddForce(horizontalVec * dx * 1000);
-        ragDollController.AddTorqueSpine(axis: playerController.horizontalVec.normalized, forward: playerController.forwardTf.forward);
+        ragDollController.AddTorqueCenterSpineHorizontal(axis: playerController.horizontalVec.normalized);
+    }
+
+    public void Attacked(Vector3 attackedVec)
+    {
+
+        ragDollController.AddForceCenterSpine(attackedVec * 1000, ForceMode.Impulse);
     }
 }

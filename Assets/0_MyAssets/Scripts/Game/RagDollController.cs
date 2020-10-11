@@ -9,6 +9,7 @@ public class RagDollController : MonoBehaviour
 {
     Rigidbody[] rigidbodies;
     [SerializeField] Rigidbody[] spineRigidbodies;
+
     private void Awake()
     {
         rigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -16,15 +17,18 @@ public class RagDollController : MonoBehaviour
 
     void Start()
     {
-
+        spineRigidbodies[1].maxAngularVelocity = 1000;
     }
 
-    public void AddForce(Vector3 force, ForceMode mode = ForceMode.Force)
+    public void AddForceCenterSpine(Vector3 force, ForceMode mode = ForceMode.Force)
     {
-        foreach (var rigidbody in rigidbodies)
-        {
-            rigidbody.AddForce(force, mode);
-        }
+        spineRigidbodies[1].AddForce(force, mode);
+    }
+
+    public void AddTorqueCenterSpineHorizontal(Vector3 axis)
+    {
+        var center = GetPosition;
+        spineRigidbodies[1].AddTorque(axis * 1000f);
     }
 
     public Vector3 GetPosition
@@ -38,6 +42,16 @@ public class RagDollController : MonoBehaviour
             }
 
             return pos / (float)rigidbodies.Length;
+        }
+    }
+
+    /*
+    
+        public void AddForce(Vector3 force, ForceMode mode = ForceMode.Force)
+    {
+        foreach (var rigidbody in rigidbodies)
+        {
+            rigidbody.AddForce(force, mode);
         }
     }
 
@@ -111,5 +125,11 @@ public class RagDollController : MonoBehaviour
             //Debug.Log(rigidbody.velocity.magnitude);
             // rigidbody.AddTorque(playerController.horizontalVec * 1000000000);
         }
-    }
+    }*/
+
+
+
+
+
+
 }

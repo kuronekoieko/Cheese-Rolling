@@ -1528,6 +1528,7 @@ GameObject:
   - component: {fileID: 2081366512}
   - component: {fileID: 2081366511}
   - component: {fileID: 2081366513}
+  - component: {fileID: 2170057703650506221}
   m_Layer: 0
   m_Name: The Character 8
   m_TagString: Untagged
@@ -1614,6 +1615,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17eb331e2ce59490b92214cb5bd8b1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &2170057703650506221
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726393449937871686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9622855
+  m_Center: {x: 2.9233868e-10, y: 1.8935251, z: -0.00000036743523}
 --- !u!1 &7726393449937871688
 GameObject:
   m_ObjectHideFlags: 0

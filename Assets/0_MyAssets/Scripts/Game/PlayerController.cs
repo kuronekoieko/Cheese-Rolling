@@ -25,17 +25,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        dx = Input.GetMouseButton(0) ? Input.GetAxis("Mouse X") : 0;
-        //dx = JoystickInput.MouseDragVecNormalized.x;
+        // dx = Input.GetMouseButton(0) ? Input.GetAxis("Mouse X") : 0;
+        dx = JoystickInput.MouseDragVecNormalized.x;
         // Debug.Log(JoystickInput.MouseDragVecNormalized);
     }
 
 
     private void FixedUpdate()
     {
-        ragDollController.AddForce(horizontalVec * dx * 1000);
-        ragDollController.AddTorqueSpine(axis: horizontalVec.normalized, forward: forwardTf.forward);
+        ragDollController.AddForceCenterSpine(horizontalVec * dx * 2000);
+        //ragDollController.AddTorqueSpine(axis: horizontalVec.normalized, forward: forwardTf.forward);
+        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized);
         //ragDollController.AddTorqueSpine(axis: cameraController.transform.forward * dx);
         // ragDollController.AddTorqueSpineHorizontal(dx);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var aiPlayer = other.gameObject.GetComponent<AIPlayerController>();
+        if (aiPlayer == null) return;
+        aiPlayer.Attacked(aiPlayer.transform.position - transform.position);
     }
 }
