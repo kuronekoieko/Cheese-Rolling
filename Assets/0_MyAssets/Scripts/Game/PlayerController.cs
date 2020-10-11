@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     RagDollController ragDollController;
     [Inject] CameraController cameraController;
+    [Inject] GameManager gameManager;
     public Vector3 GetPosition => ragDollController.GetPosition;
     float dx;
     public Vector3 horizontalVec { get; set; }
@@ -45,5 +46,6 @@ public class PlayerController : MonoBehaviour
         var aiPlayer = other.gameObject.GetComponent<AIPlayerController>();
         if (aiPlayer == null) return;
         aiPlayer.Attacked(aiPlayer.transform.position - transform.position);
+        gameManager.PlayAttackEffect(other.ClosestPoint(transform.position));
     }
 }
