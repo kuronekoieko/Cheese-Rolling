@@ -31,7 +31,7 @@ public class RagDollController : MonoBehaviour
         spineRigidbodies[1].AddForce(force, ForceMode.Impulse);
     }
 
-    public void AddTorqueCenterSpineHorizontal(Vector3 axis)
+    public void AddTorqueCenterSpineHorizontal(Vector3 axis, float power)
     {
         var center = GetPosition;
         spineRigidbodies[1].AddTorque(axis * 1000f);

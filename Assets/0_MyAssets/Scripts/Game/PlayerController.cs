@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         ragDollController.AddForceToMove(horizontalVec * dx * 2000);
         //ragDollController.AddTorqueSpine(axis: horizontalVec.normalized, forward: forwardTf.forward);
-        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized);
+        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 2000);
         //ragDollController.AddTorqueSpine(axis: cameraController.transform.forward * dx);
         // ragDollController.AddTorqueSpineHorizontal(dx);
     }
