@@ -11,8 +11,7 @@ public class AddGravity : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-
-    void Update()
+    private void FixedUpdate()
     {
         rb.AddForce(Vector3.down * downForce, ForceMode.Acceleration);
     }
