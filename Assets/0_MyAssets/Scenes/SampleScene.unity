@@ -14280,6 +14280,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: The Character 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5023988136950240838, guid: 9d3c166db60544e7e97717fff2601cf7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5023988136950467160, guid: 9d3c166db60544e7e97717fff2601cf7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14597,7 +14602,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 469285570}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1183176843}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e6b798e9cbeb4dc4a22bd9f30c38bca, type: 3}
@@ -38653,6 +38658,25 @@ CapsuleCollider:
   m_Height: 8.073147
   m_Direction: 1
   m_Center: {x: 0.00000011920942, y: 3.707221, z: -0.0000004768373}
+--- !u!1 &1183176843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5023988136950240824, guid: 9d3c166db60544e7e97717fff2601cf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 469285570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1183176848
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183176843}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9622855
+  m_Center: {x: 2.9233868e-10, y: 1.8935251, z: -0.00000036743523}
 --- !u!1 &1183447516 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 77d2a70a159821845af6257a8131a10d,

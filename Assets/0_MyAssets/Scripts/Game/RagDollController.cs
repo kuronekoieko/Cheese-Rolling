@@ -22,6 +22,7 @@ public class RagDollController : MonoBehaviour
 
     public void AddForceCenterSpine(Vector3 force, ForceMode mode = ForceMode.Force)
     {
+        if (spineRigidbodies[1].velocity.sqrMagnitude > 500) return;
         spineRigidbodies[1].AddForce(force, mode);
     }
 
