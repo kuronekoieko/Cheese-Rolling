@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     RagDollController ragDollController;
     [Inject] CameraController cameraController;
     [Inject] GameManager gameManager;
+    [Inject] TargetController targetController;
+    [Inject] TargetIconController targetIconController;
     public Vector3 GetPosition => ragDollController.GetPosition;
     float dx;
     public Vector3 horizontalVec { get; set; }
@@ -75,17 +77,18 @@ public class PlayerController : MonoBehaviour
     }
     void HitTarget(Collider other)
     {
-        var target = other.GetComponent<TargetController>();
-        if (target == null) return;
+        if (other.gameObject != targetController.gameObject) return;
 
-        target.transform.parent = rightHandTf;
-        target.transform.localPosition = Vector3.up * 0.065f;
-        target.OnHitPlayer();
+        targetController.transform.parent = rightHandTf;
+        targetController.transform.localPosition = Vector3.up * 0.065f;
+        targetController.OnHitPlayer();
         playerState = PlayerState.Goaled;
         ragDollController.EnableRagdoll(false);
         transform.up = Vector3.up;
         transform.forward = -Vector3.forward;
         ragDollController.AnimSetBool("Goal", true);
+        cameraController.GoaledAnim();
+        targetIconController.gameObject.SetActive(false);
     }
 
 }
