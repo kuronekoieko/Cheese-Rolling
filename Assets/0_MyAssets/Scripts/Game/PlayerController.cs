@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         ragDollController.AddForceToMove(horizontalVec * dx * 2000);
         //ragDollController.AddTorqueSpine(axis: horizontalVec.normalized, forward: forwardTf.forward);
-        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 2000);
+        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 3000);
         //ragDollController.AddTorqueSpine(axis: cameraController.transform.forward * dx);
         // ragDollController.AddTorqueSpineHorizontal(dx);
     }
@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         var aiPlayer = other.gameObject.GetComponent<AIPlayerController>();
         if (aiPlayer == null) return;
-        aiPlayer.Attacked(aiPlayer.transform.position - transform.position);
-        gameManager.PlayAttackEffect(other.ClosestPoint(transform.position));
+
+        aiPlayer.Attacked(horizontalVec * (aiPlayer.transform.position.x - transform.position.x));
+        gameManager.PlayAttackEffect(aiPlayer.transform.position);
     }
 }

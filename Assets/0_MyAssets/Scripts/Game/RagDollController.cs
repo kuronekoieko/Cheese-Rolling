@@ -17,7 +17,7 @@ public class RagDollController : MonoBehaviour
 
     void Start()
     {
-        spineRigidbodies[1].maxAngularVelocity = 1000;
+        spineRigidbodies[1].maxAngularVelocity = 3000;
     }
 
     public void AddForceToMove(Vector3 force, ForceMode mode = ForceMode.Force)
