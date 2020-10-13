@@ -43,10 +43,28 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        HitAIPlayer(other);
+        HitJumpingBoard(other);
+    }
+
+
+    void HitAIPlayer(Collider other)
+    {
         var aiPlayer = other.gameObject.GetComponent<AIPlayerController>();
         if (aiPlayer == null) return;
 
         aiPlayer.Attacked(horizontalVec * (aiPlayer.transform.position.x - transform.position.x));
         gameManager.PlayAttackEffect(aiPlayer.transform.position);
     }
+
+    void HitJumpingBoard(Collider other)
+    {
+        var jumpingBoard = other.GetComponent<JumpingBoardController>();
+        if (jumpingBoard == null) return;
+        if (jumpingBoard.IsUsed) return;
+        ragDollController.AddForceToAttacked(forwardTf.forward * 4000f);
+        jumpingBoard.IsUsed = true;
+        Debug.Log("aaaaaaaaaaaaaaaaa");
+    }
+
 }
