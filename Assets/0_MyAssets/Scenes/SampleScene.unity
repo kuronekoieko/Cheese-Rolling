@@ -53194,7 +53194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae2b93a60b664aaa8d96a15a14e71c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPS: {fileID: 1723865016}
+  attackPS: {fileID: 1938723993}
 --- !u!4 &1456509871
 Transform:
   m_ObjectHideFlags: 0
@@ -59749,12 +59749,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 89ccc2d18c944fa489a22fc2a7a7e40f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd282ab2a221afc4e817545bcad6c781, type: 3}
---- !u!198 &1723865016 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19827778, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2105121244}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1723865021 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 405762, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac,
@@ -66491,6 +66485,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 89ccc2d18c944fa489a22fc2a7a7e40f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e059fd06be47644a9d06d624f32be34, type: 3}
+--- !u!198 &1938723993 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19831454, guid: fa0f45d143def4e4188900695d955614,
+    type: 3}
+  m_PrefabInstance: {fileID: 1766703453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1938723995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 425322, guid: fa0f45d143def4e4188900695d955614,
