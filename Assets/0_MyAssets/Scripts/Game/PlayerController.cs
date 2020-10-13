@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         var jumpingBoard = other.GetComponent<JumpingBoardController>();
         if (jumpingBoard == null) return;
         if (jumpingBoard.IsUsed) return;
-        ragDollController.AddForceToAttacked(forwardTf.forward * 4000f);
+        ragDollController.AddForceToAttacked(Vector3.forward * 2000f);
         jumpingBoard.IsUsed = true;
         Debug.Log("aaaaaaaaaaaaaaaaa");
     }
