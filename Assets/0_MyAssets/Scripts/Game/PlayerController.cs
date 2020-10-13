@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
+public enum PlayerState
+{
+    Rolling,
+    Goaled,
+}
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Transform rightHandTf;
     RagDollController ragDollController;
     [Inject] CameraController cameraController;
     [Inject] GameManager gameManager;
@@ -12,6 +18,7 @@ public class PlayerController : MonoBehaviour
     float dx;
     public Vector3 horizontalVec { get; set; }
     public Transform forwardTf;
+    PlayerState playerState;
 
     private void Awake()
     {
@@ -21,28 +28,31 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         horizontalVec = Vector3.Cross(forwardTf.forward, -Vector3.up);
+        playerState = PlayerState.Rolling;
     }
 
 
     void Update()
     {
-        // dx = Input.GetMouseButton(0) ? Input.GetAxis("Mouse X") : 0;
         dx = JoystickInput.MouseDragVecNormalized.x;
-        // Debug.Log(JoystickInput.MouseDragVecNormalized);
     }
 
 
     private void FixedUpdate()
     {
-        ragDollController.AddForceToMove(horizontalVec * dx * 2000);
-        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 4000);
-        ragDollController.AddForce(forwardTf.forward * 500f);
+        if (playerState == PlayerState.Rolling)
+        {
+            ragDollController.AddForceToMove(horizontalVec * dx * 2000);
+            ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 4000);
+            ragDollController.AddForce(forwardTf.forward * 500f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         HitAIPlayer(other);
         HitJumpingBoard(other);
+        HitTarget(other);
     }
 
 
@@ -62,6 +72,19 @@ public class PlayerController : MonoBehaviour
         if (jumpingBoard.IsUsed) return;
         ragDollController.AddForce(Vector3.forward * 2000f, ForceMode.Impulse);
         jumpingBoard.IsUsed = true;
+    }
+    void HitTarget(Collider other)
+    {
+        var target = other.GetComponent<TargetController>();
+        if (target == null) return;
+        target.transform.position = rightHandTf.position;
+        target.transform.parent = rightHandTf;
+        target.OnHitPlayer();
+        playerState = PlayerState.Goaled;
+        ragDollController.EnableRagdoll(false);
+        transform.up = Vector3.up;
+        transform.forward = -Vector3.forward;
+        ragDollController.AnimSetBool("Goal", true);
     }
 
 }

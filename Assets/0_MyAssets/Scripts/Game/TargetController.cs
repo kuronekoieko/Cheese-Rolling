@@ -5,6 +5,7 @@ using UnityEngine;
 public class TargetController : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
+    [SerializeField] Collider col;
     void Start()
     {
         rb.maxAngularVelocity = 1000f;
@@ -20,5 +21,11 @@ public class TargetController : MonoBehaviour
         if (!other.gameObject.CompareTag("Goal")) return;
         rb.constraints = RigidbodyConstraints.None;
         rb.AddTorque(transform.forward * 100f, ForceMode.Impulse);
+    }
+
+    public void OnHitPlayer()
+    {
+        col.enabled = false;
+        rb.isKinematic = true;
     }
 }
