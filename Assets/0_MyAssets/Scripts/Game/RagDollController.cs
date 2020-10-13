@@ -17,7 +17,7 @@ public class RagDollController : MonoBehaviour
 
     void Start()
     {
-        spineRigidbodies[1].maxAngularVelocity = 3000;
+        spineRigidbodies[1].maxAngularVelocity = 4000;
     }
 
     public void AddForceToMove(Vector3 force, ForceMode mode = ForceMode.Force)
@@ -26,9 +26,9 @@ public class RagDollController : MonoBehaviour
         spineRigidbodies[1].AddForce(force, mode);
     }
 
-    public void AddForceToAttacked(Vector3 force, ForceMode mode = ForceMode.Force)
+    public void AddForce(Vector3 force, ForceMode mode = ForceMode.Force)
     {
-        spineRigidbodies[1].AddForce(force, ForceMode.Impulse);
+        spineRigidbodies[1].AddForce(force, mode);
     }
 
     public void AddTorqueCenterSpineHorizontal(Vector3 axis, float power)

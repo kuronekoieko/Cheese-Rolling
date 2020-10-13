@@ -35,10 +35,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         ragDollController.AddForceToMove(horizontalVec * dx * 2000);
-        //ragDollController.AddTorqueSpine(axis: horizontalVec.normalized, forward: forwardTf.forward);
-        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 3000);
-        //ragDollController.AddTorqueSpine(axis: cameraController.transform.forward * dx);
-        // ragDollController.AddTorqueSpineHorizontal(dx);
+        ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 4000);
+        ragDollController.AddForce(forwardTf.forward * 500f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,9 +60,8 @@ public class PlayerController : MonoBehaviour
         var jumpingBoard = other.GetComponent<JumpingBoardController>();
         if (jumpingBoard == null) return;
         if (jumpingBoard.IsUsed) return;
-        ragDollController.AddForceToAttacked(Vector3.forward * 2000f);
+        ragDollController.AddForce(Vector3.forward * 2000f, ForceMode.Impulse);
         jumpingBoard.IsUsed = true;
-        Debug.Log("aaaaaaaaaaaaaaaaa");
     }
 
 }
