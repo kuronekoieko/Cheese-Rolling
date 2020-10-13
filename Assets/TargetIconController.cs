@@ -6,16 +6,7 @@ public class TargetIconController : MonoBehaviour
 {
     [Inject] TargetController targetController;
     [SerializeField] RectTransform rectTransform;
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void LateUpdate()
     {
