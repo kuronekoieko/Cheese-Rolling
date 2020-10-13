@@ -77,8 +77,9 @@ public class PlayerController : MonoBehaviour
     {
         var target = other.GetComponent<TargetController>();
         if (target == null) return;
-        target.transform.position = rightHandTf.position;
+
         target.transform.parent = rightHandTf;
+        target.transform.localPosition = Vector3.up * 0.065f;
         target.OnHitPlayer();
         playerState = PlayerState.Goaled;
         ragDollController.EnableRagdoll(false);

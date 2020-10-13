@@ -6,6 +6,7 @@ public class TargetController : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] Collider col;
+    [SerializeField] TrailRenderer trailRenderer;
     void Start()
     {
         rb.maxAngularVelocity = 1000f;
@@ -27,5 +28,6 @@ public class TargetController : MonoBehaviour
     {
         col.enabled = false;
         rb.isKinematic = true;
+        trailRenderer.enabled = false;
     }
 }
