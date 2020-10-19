@@ -11,6 +11,7 @@ public enum PlayerState
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform rightHandTf;
+    [SerializeField] TrailRenderer jumpTrail;
     RagDollController ragDollController;
     [Inject] CameraController cameraController;
     [Inject] GameManager gameManager;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 horizontalVec { get; set; }
     public Transform forwardTf;
     PlayerState playerState;
+    BoxCollider floorCollider;
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         horizontalVec = Vector3.Cross(forwardTf.forward, -Vector3.up);
         playerState = PlayerState.Rolling;
+        jumpTrail.gameObject.SetActive(false);
     }
 
 
@@ -54,7 +57,27 @@ public class PlayerController : MonoBehaviour
     {
         HitAIPlayer(other);
         HitJumpingBoard(other);
+        HitFloor(other);
         HitTarget(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        ExitJumpingBoard(other);
+    }
+
+    void ExitJumpingBoard(Collider other)
+    {
+        var jumpingBoard = other.GetComponent<JumpingBoardController>();
+        if (jumpingBoard == null) return;
+
+    }
+
+    void HitFloor(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Floor")) return;
+        jumpTrail.gameObject.SetActive(false);
+        floorCollider = other.GetComponent<BoxCollider>();
     }
 
 
@@ -74,6 +97,7 @@ public class PlayerController : MonoBehaviour
         if (jumpingBoard.IsUsed) return;
         ragDollController.AddForce(Vector3.forward * 2000f, ForceMode.Impulse);
         jumpingBoard.IsUsed = true;
+        jumpTrail.gameObject.SetActive(true);
     }
     void HitTarget(Collider other)
     {
@@ -89,6 +113,9 @@ public class PlayerController : MonoBehaviour
         ragDollController.AnimSetBool("Goal", true);
         cameraController.GoaledAnim();
         targetIconController.gameObject.SetActive(false);
+        var pos = transform.position;
+        pos.y = floorCollider.transform.position.y + floorCollider.size.y / 2 * floorCollider.transform.localScale.y;
+        transform.position = pos;
     }
 
 }
