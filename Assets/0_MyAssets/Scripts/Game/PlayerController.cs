@@ -47,8 +47,8 @@ public class PlayerController : MonoBehaviour
     {
         if (playerState == PlayerState.Rolling)
         {
-            ragDollController.AddForceToMove(horizontalVec * dx * 2000);
-            ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 4000);
+            ragDollController.AddForceToMove(horizontalVec * dx * 10000);
+            ragDollController.AddTorqueCenterSpineHorizontal(horizontalVec.normalized, 1000);
             ragDollController.AddForce(forwardTf.forward * 500f);
         }
     }
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         var jumpingBoard = other.GetComponent<JumpingBoardController>();
         if (jumpingBoard == null) return;
         if (jumpingBoard.IsUsed) return;
-        ragDollController.AddForce(Vector3.forward * 2000f, ForceMode.Impulse);
+        ragDollController.AddForce(Vector3.forward * 1000f, ForceMode.Impulse);
         jumpingBoard.IsUsed = true;
         jumpTrail.gameObject.SetActive(true);
     }
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         transform.up = Vector3.up;
         transform.forward = -Vector3.forward;
         ragDollController.AnimSetBool("Goal", true);
-        cameraController.GoaledAnim();
+        // cameraController.GoaledAnim();
         targetIconController.gameObject.SetActive(false);
         var pos = transform.position;
         pos.y = floorCollider.transform.position.y + floorCollider.size.y / 2 * floorCollider.transform.localScale.y;

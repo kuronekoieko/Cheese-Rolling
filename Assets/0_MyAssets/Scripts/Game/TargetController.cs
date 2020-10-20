@@ -21,7 +21,7 @@ public class TargetController : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Goal")) return;
         rb.constraints = RigidbodyConstraints.None;
-        rb.AddTorque(transform.forward * 100f, ForceMode.Impulse);
+        rb.AddTorque(transform.forward * 1000f, ForceMode.Impulse);
     }
 
     public void OnHitPlayer()
